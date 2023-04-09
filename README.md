@@ -1,5 +1,5 @@
 # ChatGPT Eval Plugin
-This is a very simple example of a plugin for ChatGPT. The plugin passes a string to the Python `eval` built-in.
+This is a very simple example a ChatGPT plugin. The plugin passes a string to the Python `eval` built-in.
 
 ## Plugin
 ### Install
