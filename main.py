@@ -1,9 +1,9 @@
 import builtins
+from typing import Any
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
-from typing import Any
 
 app: FastAPI = FastAPI(servers=[{"url": "http://localhost:8000"}])
 app.add_middleware(
