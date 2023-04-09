@@ -1,11 +1,11 @@
 import builtins
-import os
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import Response
+from fastapi.staticfiles import StaticFiles
+from typing import Any
 
-app = FastAPI(servers=[{"url": "http://localhost:8000"}])
+app: FastAPI = FastAPI(servers=[{"url": "http://localhost:8000"}])
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -14,22 +14,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
-@app.get("/.well-known/ai-plugin.json")
-async def ai_plugin():
-    with open(os.path.join(".well-known", "ai-plugin.json"), mode="r") as f:
-        text = f.read()
-    return Response(text, media_type="application/json")
-
-
-@app.get("/logo.svg")
-async def logo():
-    with open(os.path.join("logo.svg"), mode="rb") as f:
-        image = f.read()
-    return Response(image, media_type="image/svg+xml")
-
+app.mount("/.well-known/", StaticFiles(directory=".well-known/"), name="static")
 
 @app.get("/eval")
-async def eval(string: str):
-    result = builtins.eval(string)
-    return {"result": result}
+async def eval(string: str) -> dict:
+    result: Any = builtins.eval(string)
+    return {"result": str(result)}

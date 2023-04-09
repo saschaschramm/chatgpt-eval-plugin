@@ -8,7 +8,7 @@ pip install -r requirements.txt
 
 ## Run the Plugin
 ```console
-uvicorn main:app
+uvicorn main:app --port 8000
 ```
 
 ## Add the Plugin to ChatGPT
