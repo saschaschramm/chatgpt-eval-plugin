@@ -31,11 +31,15 @@ Current date: 2023-04-09
 
 # Tools
 ## python_eval
-// A plugin that passes a string to the Python eval built-in 
-namespace python_eval { 
-    // Eval 
-    type eval_eval_get = (_: { string: string, }) => any; 
-} // namespace python_eval"
+// A plugin that passes a string to the Python eval built-in
+namespace python_eval {
+
+// Eval
+type eval_eval_get = (_: {
+string: string,
+}) => any;
+
+} // namespace python_eval
 ```
 ChatGPT converts the OpenAPI document into TypeScript. It makes use of type aliases:
 https://www.typescriptlang.org/docs/handbook/advanced-types.html#type-aliases
